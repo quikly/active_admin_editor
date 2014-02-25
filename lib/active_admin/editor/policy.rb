@@ -56,7 +56,7 @@ module ActiveAdmin
       # access secret.
       def digest
         OpenSSL::HMAC.digest(
-          OpenSSL::Digest::Digest.new('sha1'),
+          OpenSSL::Digest.new('sha1'),
           secret,
           document
         )
