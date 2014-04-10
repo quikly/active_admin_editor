@@ -11,6 +11,10 @@
     this.$textarea  = this.$el.find('textarea')
     this.policy     = this.$el.data('policy')
 
+    config.aws_access_key_id = this.$el.data('aws-access-key-id')
+    config.s3_bucket         = this.$el.data('s3-bucket')
+    config.storage_dir       = this.$el.data('storage-dir')
+
     this._addToolbar()
     this._attachEditor()
   }
@@ -47,7 +51,7 @@
    * Adds a file input attached to the supplied text input. And upload is
    * triggered if the source of the input is changed.
    *
-   * @input Text input to attach a file input to. 
+   * @input Text input to attach a file input to.
    */
   Editor.prototype._addUploader = function(input) {
     var $input = $(input)
