@@ -5050,6 +5050,12 @@ wysihtml5.dom.parse = (function() {
   
   // ------------ attribute checks ------------ \\
   var attributeCheckMethods = {
+    allow: (function() {
+      return function(attributeValue) {
+        return attributeValue;
+      }
+    })(),
+
     url: (function() {
       var REG_EXP = /^https?:\/\//i;
       return function(attributeValue) {
@@ -8921,7 +8927,13 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         }
         
         fieldName = field.getAttribute(ATTRIBUTE_FIELDS);
-        newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
+
+        if (fieldName === "href") {
+          newValue = this.elementToChange ? (this.elementToChange.getAttribute(fieldName) || "") : field.defaultValue;
+        } else {
+          newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
+        }
+
         field.value = newValue;
       }
     },
