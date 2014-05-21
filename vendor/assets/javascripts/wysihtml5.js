@@ -8928,7 +8928,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
         
         fieldName = field.getAttribute(ATTRIBUTE_FIELDS);
 
-        if (fieldName === "href") {
+        if (fieldName === "href" || fieldName === "src") {
           newValue = this.elementToChange ? (this.elementToChange.getAttribute(fieldName) || "") : field.defaultValue;
         } else {
           newValue  = this.elementToChange ? (this.elementToChange[fieldName] || "") : field.defaultValue;
